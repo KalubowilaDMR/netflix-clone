@@ -8,11 +8,11 @@ const Home = () => {
     <Fragment>
         <div>
             <Main />
-            <SectionsRow title='Upcomming' fetchURL={requests.requestUpcomming}/>
-            <SectionsRow title='Popular' fetchURL={requests.requestPopular}/>
-            <SectionsRow title='Trending' fetchURL={requests.requestTrending}/>
-            <SectionsRow title='Top Rated' fetchURL={requests.requestTopRated}/>
-            <SectionsRow title='Horror' fetchURL={requests.requestHorror}/>
+            <SectionsRow rowId='1' title='Upcomming' fetchURL={requests.requestUpcomming}/>
+            <SectionsRow rowId='2' title='Popular' fetchURL={requests.requestPopular}/>
+            <SectionsRow rowId='3' title='Trending' fetchURL={requests.requestTrending}/>
+            <SectionsRow rowId='4' title='Top Rated' fetchURL={requests.requestTopRated}/>
+            <SectionsRow rowId='5' title='Comedy' fetchURL={requests.requestComedy}/>
         </div>
     </Fragment>
   )
