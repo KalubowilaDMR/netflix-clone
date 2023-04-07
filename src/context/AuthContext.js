@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from '../firebase'
+import { auth, db } from '../firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore"; 
 
 const AuthContext = createContext();
 
@@ -8,8 +9,12 @@ export const AuthContextProvider = ({children}) => {
 
     const [user, setUser] = useState({})
 
-    const signUp = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password)
+    
+    async function signUp (email, password) {
+        createUserWithEmailAndPassword(auth, email, password)
+        await setDoc(doc(db, "users", email), {
+            savedShow: []
+        })
     }
 
     const signIn = (email, password) => {
@@ -32,7 +37,7 @@ export const AuthContextProvider = ({children}) => {
     
 
     return(
-        <AuthContext.Provider value={{ signUp, signIn, signOut, auth }}>
+        <AuthContext.Provider value={{ signUp, signIn, signOutUser, user }}>
             {children}
         </AuthContext.Provider>
     )

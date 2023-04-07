@@ -22,7 +22,7 @@ const Main = () => {
         }
     }
 
-    // console.log(movie);
+    console.log(movies);
 
   return (
     <Fragment>
